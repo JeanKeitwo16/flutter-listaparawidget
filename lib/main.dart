@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projetolista/cardwidget.dart';
 import 'package:projetolista/model/pessoa.dart';
 
 void main() {
@@ -35,23 +36,25 @@ class _Tela1State extends State<Tela1> {
         nome: "Cristiano",
         idade: 39,
         sobrenome: "Ronaldo",
-        cpf: "757.324.342-54")
+        cpf: "757.324.342-54"),
   ];
+
+  void removerItem(int index){
+    setState(() {
+      lista.removeAt(index);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
             title: Text("App Lista para Widget"),
-            backgroundColor: Colors.amber),
+            backgroundColor: Colors.redAccent),
         body: ListView.builder(
           itemCount: lista.length,
           itemBuilder: (context, index) {
-            //return Text(lista[index].nome);
-            return ElevatedButton(
-              onPressed: () {},
-              child: Text(lista[index].nome),
-            );
+            return Cardwidget(nome: lista[index].nome, sobrenome: lista[index].sobrenome, onRemove: removerItem,);
           },
         ));
   }
