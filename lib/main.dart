@@ -39,7 +39,7 @@ class _Tela1State extends State<Tela1> {
         cpf: "757.324.342-54"),
   ];
 
-  void removerItem(int index){
+  void removerItem(int index) {
     setState(() {
       lista.removeAt(index);
     });
@@ -54,7 +54,11 @@ class _Tela1State extends State<Tela1> {
         body: ListView.builder(
           itemCount: lista.length,
           itemBuilder: (context, index) {
-            return Cardwidget(nome: lista[index].nome, sobrenome: lista[index].sobrenome, onRemove: removerItem,);
+            return Cardwidget(
+              nome: lista[index].nome,
+              sobrenome: lista[index].sobrenome,
+              onRemove: ()=> removerItem(index),
+            );
           },
         ));
   }
